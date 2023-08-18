@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 export default function Task({
   task: { id, title, state },
@@ -30,6 +29,7 @@ export default function Task({
           readOnly={true}
           name="title"
           placeholder="Input title"
+          style={{ background: "red" }}
         />
       </label>
 
@@ -41,19 +41,9 @@ export default function Task({
           aria-label={`pinTask-${id}`}
           key={`pinTask-${id}`}
         >
-          <span className="icon-star" />
+          <span className={`icon-star`} />
         </button>
       )}
     </div>
   );
 }
-
-Task.propTypes = {
-  task: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  onArchiveTask: PropTypes.func,
-  onPinTask: PropTypes.func,
-};
